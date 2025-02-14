@@ -15,26 +15,113 @@
       align-items: center;
       overflow: hidden;
     }
-    .container {
-      width: 100vw;
-      height: 100vh;
+    .card {
+      width: 300px;
+      height: 400px;
       position: relative;
+      perspective: 1000px;
+    }
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transform-style: preserve-3d;
+      transform: rotateY(0deg);
+      transition: transform 1s;
+    }
+    .card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+    .card-front, .card-back {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    .card-front {
+      background: #ffcad4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      color: #6d6875;
+    }
+    .card-back {
+      background: #b8a9c9;
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      color: white;
+      text-align: center;
+    }
+    .car {
+      position: relative;
+      bottom: 10%;
+      width: 150px;
+      height: 75px;
+      background-color: #ffcad4;
+      border-radius: 20px 20px 10px 10px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .windshield {
+      width: 100px;
+      height: 50px;
+      background-color: #fde2e4;
+      border-radius: 15px;
+      position: absolute;
+      top: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid #f8b4d9;
+    }
+    .heart {
+      width: 40px;
+      height: 40px;
+      background-color: #e63946;
+      position: relative;
+      transform: rotate(-45deg);
+    }
+    .heart:before,
+    .heart:after {
+      content: "";
+      width: 40px;
+      height: 40px;
+      background-color: #e63946;
+      border-radius: 50%;
+      position: absolute;
+    }
+    .heart:before {
+      top: -20px;
+      left: 0;
+    }
+    .heart:after {
+      left: 20px;
+      top: 0;
     }
     .road {
       position: absolute;
-      bottom: 10%;
+      bottom: 5%;
       left: 0;
       width: 100%;
-      height: 20%;
+      height: 10%;
       background-color: #b8a9c9;
-      border-top: 10px solid #f8b4d9;
+      border-top: 5px solid #f8b4d9;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
     .road-line {
       width: 10%;
-      height: 5px;
+      height: 3px;
       background: white;
       margin: 0 2%;
       animation: move-lines 3s linear infinite;
@@ -47,42 +134,30 @@
         transform: translateX(-100%);
       }
     }
-    .car {
-      position: absolute;
-      bottom: 15%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 200px;
-      height: 100px;
-      background-color: #ffcad4;
-      border-radius: 20px 20px 10px 10px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    }
-    .lyrics {
-      position: absolute;
-      bottom: 50%;
-      left: 50%;
-      transform: translateX(-50%);
-      color: #6d6875;
-      font-size: 1.5rem;
-      text-align: center;
-      width: 80%;
-    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="lyrics">
-      <!-- Add your favorite song lyrics here -->
-      "Place lyrics here"
-    </div>
-    <div class="car"></div>
-    <div class="road">
-      <div class="road-line"></div>
-      <div class="road-line"></div>
-      <div class="road-line"></div>
-      <div class="road-line"></div>
-      <div class="road-line"></div>
+  <div class="card">
+    <div class="card-inner">
+      <div class="card-front">
+        <div>Happy Valentine's Day!</div>
+      </div>
+      <div class="card-back">
+        <div>
+          <div>Your favorite lyrics go here...</div>
+          <div class="car">
+            <div class="windshield">
+              <div class="heart"></div>
+            </div>
+          </div>
+          <div class="road">
+            <div class="road-line"></div>
+            <div class="road-line"></div>
+            <div class="road-line"></div>
+            <div class="road-line"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </body>
